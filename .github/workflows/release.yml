@@ -21,16 +21,12 @@ jobs:
           fetch-depth: 0
           ref: main
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.5.1
-
       - uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Install deps
-        run: pnpm i
+        run: npm ci
 
       - name: Create .npmrc
         run: |
@@ -45,7 +41,6 @@ jobs:
 
       - name: Bump versions
         run: |
-          pnpm version:ci
+          npm run version:ci
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
