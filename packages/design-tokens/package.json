@@ -1,5 +1,6 @@
 {
   "name": "@foleon/design-tokens",
+  "private": true,
   "version": "0.1.0",
   "description": "",
   "main": "./build/ts/variables.js",
