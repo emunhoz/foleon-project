@@ -8,7 +8,7 @@
   "type": "commonjs",
   "scripts": {
     "test": "vitest run",
-    "preinstall": "pnpm run build",
+    "preinstall": "npm run build",
     "dev": "pnpm run build --watch",
     "build": "tsup src/index.ts --dts"
   },
