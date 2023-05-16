@@ -6,7 +6,7 @@
   "main": "./build/ts/variables.js",
   "types": "./build/ts/variables.d.ts",
   "scripts": {
-    "preinstall": "npm run build",
+    "preinstall": "pnpm run build",
     "build": "style-dictionary build"
   },
   "keywords": [],

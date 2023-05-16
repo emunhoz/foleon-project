@@ -8,7 +8,7 @@ importers:
         specifier: ^20.1.6
         version: 20.1.6
       lerna:
-        specifier: ^6.6.1
+        specifier: ^6.6.2
         version: 6.6.2
       prettier:
         specifier: ^2.8.8
@@ -17,7 +17,7 @@ importers:
   apps/web:
     dependencies:
       '@foleon/ui':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../../packages/ui
       '@types/node':
         specifier: 20.1.4
@@ -81,7 +81,7 @@ importers:
         specifier: ^11.11.0
         version: 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.6)(react@18.2.0)
       '@foleon/design-tokens':
-        specifier: ^0.1.1
+        specifier: ^0.1.2
         version: link:../design-tokens
       react:
         specifier: 18.2.0
