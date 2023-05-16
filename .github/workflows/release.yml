@@ -32,6 +32,12 @@ jobs:
       - name: Install deps
         run: pnpm i
 
+      - name: Create .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Config git user
         run: |
           git config --global user.name "${{ github.actor }}"
