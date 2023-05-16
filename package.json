@@ -1,0 +1,19 @@
+{
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
+    "dev": "lerna run dev --parallel",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.6",
+    "lerna": "^6.6.2",
+    "prettier": "^2.8.8"
+  },
+  "packageManager": "pnpm@8.5.1"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@foleon/ui",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "pnpm run build --watch",
+    "build": "tsup src/index.ts --dts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@foleon/design-tokens": "workspace:^",
+    "@stitches/react": "^1.2.8"
+  }
+}

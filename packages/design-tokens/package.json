@@ -1,0 +1,21 @@
+{
+  "name": "@foleon/design-tokens",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./build/ts/variables.js",
+  "types": "./build/ts/variables.d.ts",
+  "scripts": {
+    "preinstall": "pnpm build",
+    "build": "style-dictionary build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "./build/css/*.css": {
+    "import": "./build/css/*.css",
+    "require": "./build/css/*.css"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.8.0"
+  }
+}
