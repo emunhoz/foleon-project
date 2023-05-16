@@ -8,6 +8,7 @@
   "scripts": {
     "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
     "dev": "lerna run dev --parallel",
+    "test": "lerna run test --parallel",
     "format": "prettier --write ."
   },
   "devDependencies": {

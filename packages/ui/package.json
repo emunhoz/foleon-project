@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "commonjs",
   "scripts": {
+    "test": "vitest run",
     "preinstall": "pnpm run build",
     "dev": "pnpm run build --watch",
     "build": "tsup src/index.ts --dts"
@@ -18,15 +19,19 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "jsdom": "^22.0.0",
     "tsup": "^6.7.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.0"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@foleon/design-tokens": "workspace:^",
-    "@stitches/react": "^1.2.8"
+    "vite": "^4.3.7"
   }
 }
