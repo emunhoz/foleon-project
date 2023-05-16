@@ -26,7 +26,7 @@ jobs:
           node-version: 18
 
       - name: Install deps
-        run: npm i
+        run: pnpm i
 
       - name: Config git user
         run: |
@@ -35,6 +35,6 @@ jobs:
 
       - name: Bump versions
         run: |
-          npm run version:ci
+          pnpm version:ci
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
