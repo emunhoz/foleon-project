@@ -22,8 +22,8 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Button onClick={fetchToken}>Login</Button>
-      <Button onClick={fetchAllProjects}>Projects</Button>
+      <Button label={'Login'} onClick={fetchToken} />
+      <Button label={'Projects'} onClick={fetchAllProjects} />
 
       <ul>
         {projects?._embedded?.title.map((project: any) => (
