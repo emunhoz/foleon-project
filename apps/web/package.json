@@ -11,22 +11,23 @@
   },
   "dependencies": {
     "@foleon/ui": "workspace:^",
-    "@types/node": "20.1.4",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
+    "axios": "^1.4.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.3-canary.0",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4",
     "vite": "^4.3.7"
   },
   "devDependencies": {
+    "@types/node": "20.1.4",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@vitejs/plugin-react": "^4.0.0",
     "jsdom": "^22.0.0",
-    "vitest": "^0.31.0"
+    "vitest": "^0.31.0",
+    "typescript": "5.0.4"
   }
 }
