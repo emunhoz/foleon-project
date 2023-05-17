@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.1.5...@foleon/web@0.2.0) (2023-05-17)
+
+### Features
+
+- setup api service ([35df5ce](https://github.com/emunhoz/foleon-project/commit/35df5ce16b77cdc33e0a541f222a93b903955da0))
+
 ## [0.1.5](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.1.4...@foleon/web@0.1.5) (2023-05-16)
 
 **Note:** Version bump only for package @foleon/web
