@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.2.0...@foleon/web@0.2.1) (2023-05-17)
+
+**Note:** Version bump only for package @foleon/web
+
 # [0.2.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.1.5...@foleon/web@0.2.0) (2023-05-17)
 
 ### Features

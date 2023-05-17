@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/emunhoz/foleon-project/compare/@foleon/ui@0.1.5...@foleon/ui@0.2.0) (2023-05-17)
+
+### Features
+
+- using vite with storybook ([7ea3219](https://github.com/emunhoz/foleon-project/commit/7ea3219fdebdfc91e7adc2100d763eabfaf98335))
+
 ## [0.1.5](https://github.com/emunhoz/foleon-project/compare/@foleon/ui@0.1.4...@foleon/ui@0.1.5) (2023-05-16)
 
 **Note:** Version bump only for package @foleon/ui
