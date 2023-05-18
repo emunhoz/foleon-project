@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.3.0...@foleon/web@0.4.0) (2023-05-18)
+
+### Features
+
+- adding auth provider ([ff2eb92](https://github.com/emunhoz/foleon-project/commit/ff2eb92c865373ba889f3c7de91dddb5690ec591))
+
 # [0.3.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.2.1...@foleon/web@0.3.0) (2023-05-18)
 
 ### Features
