@@ -4,32 +4,28 @@ import styles from './page.module.css'
 import { useState } from 'react'
 import { Button } from '@foleon/ui'
 import { retriveToken } from '@/services/auth'
-import { retriveAllProjects } from '@/services/projects'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 export default function Home() {
   const [projects, setProjects] = useState<any>([])
+  const router = useRouter()
 
-  async function fetchToken() {
-    const resp: { data: { access_token: string } } = await retriveToken()
-    localStorage.setItem('@foleon:token', resp.data.access_token)
-  }
-
-  async function fetchAllProjects() {
-    const resp: any = await retriveAllProjects()
-    setProjects(resp.data)
-    console.log(resp.data, 'all projects')
+  function handleLogin() {
+    retriveToken()
+    router.push('/dashboard')
   }
 
   return (
-    <main className={styles.main}>
-      <Button label={'Login'} onClick={fetchToken} />
-      <Button label={'Projects'} onClick={fetchAllProjects} />
-
-      <ul>
-        {projects?._embedded?.title.map((project: any) => (
-          <li key={project.id}>Name: {project.name}</li>
-        ))}
-      </ul>
-    </main>
+    <>
+      <header className={styles.header}>
+        <Image src="/logo.svg" width={130} height={38} alt="Logo" />
+        <Button label={'Login'} onClick={handleLogin} />
+      </header>
+      <main className={styles.main}>
+        <h1 className={styles.title}>Hey there! 👋</h1>
+        <Button label={'Login to continue'} onClick={handleLogin} />
+      </main>
+    </>
   )
 }

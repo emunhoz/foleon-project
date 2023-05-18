@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCookie, deleteCookie } from 'cookies-next'
 
 const HTTP_CLIENT = axios.create({
   baseURL: 'https://api.foleon.com'
@@ -6,7 +7,7 @@ const HTTP_CLIENT = axios.create({
 
 HTTP_CLIENT.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('@foleon:token')
+    const token = getCookie('@foleon:token')
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
@@ -23,7 +24,7 @@ HTTP_CLIENT.interceptors.response.use(
   response => response,
   error => {
     if (error.response.status === 401) {
-      localStorage.removeItem('@foleon:token')
+      deleteCookie('@foleon:token')
     }
   }
 )
