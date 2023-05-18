@@ -4,3 +4,22 @@
   padding: 26px;
   margin: 0px auto;
 }
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  background: #232a34;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+
+.listItemTitle {
+  font-weight: 600;
+}
+
+.listItemDate {
+  color: #c3c3c3;
+}

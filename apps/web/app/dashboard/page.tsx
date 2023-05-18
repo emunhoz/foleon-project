@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { retriveAllProjects } from '@/services/projects'
+import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 
 export default function Dashboard() {
@@ -19,9 +20,14 @@ export default function Dashboard() {
 
   return (
     <main className={styles.main}>
-      <ul>
+      <ul className={styles.list}>
         {projects?._embedded?.title.map((project: any) => (
-          <li key={project.id}>Name: {project.name}</li>
+          <li className={styles.listItem} key={project.id}>
+            <div className={styles.listItemTitle}>{project.name}</div>
+            <small className={styles.listItemDate}>
+              {militaryDate(project.created_on)}
+            </small>
+          </li>
         ))}
       </ul>
     </main>
