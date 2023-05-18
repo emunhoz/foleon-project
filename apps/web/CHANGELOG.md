@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.4.0...@foleon/web@0.5.0) (2023-05-18)
+
+### Features
+
+- display list ([01d12e2](https://github.com/emunhoz/foleon-project/commit/01d12e2175a49c5be1ceac66920ffcf1a31e5467))
+- mask date function ([e168c50](https://github.com/emunhoz/foleon-project/commit/e168c5037c96590ef503f2da7e291808ad522795))
+
 # [0.4.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.3.0...@foleon/web@0.4.0) (2023-05-18)
 
 ### Features
