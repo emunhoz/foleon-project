@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.2.1...@foleon/web@0.3.0) (2023-05-18)
+
+### Features
+
+- adding dashboard page ([8843eae](https://github.com/emunhoz/foleon-project/commit/8843eae7567a5de025c31b338db44f32f5fcd934))
+
 ## [0.2.1](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.2.0...@foleon/web@0.2.1) (2023-05-17)
 
 **Note:** Version bump only for package @foleon/web
