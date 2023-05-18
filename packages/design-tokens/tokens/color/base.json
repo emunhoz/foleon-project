@@ -1,7 +1,9 @@
 {
   "color": {
     "brand": {
-      "main": { "value": "#001945" }
+      "main": { "value": "#001945" },
+      "primary": { "value": "#03b1ff" },
+      "purple": { "value": "#9201dc" }
     },
     "base": {
       "gray": {
