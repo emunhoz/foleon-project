@@ -1,4 +1,3 @@
-import { setCookie, deleteCookie } from 'cookies-next'
 import { HTTP_CLIENT } from './api'
 
 export async function retriveToken() {
@@ -11,9 +10,8 @@ export async function retriveToken() {
       })
     )
 
-  setCookie('@foleon:token', resp.data.access_token)
+    return resp
   } catch (error) {
-    deleteCookie('@foleon:token')
     return
   }
 }

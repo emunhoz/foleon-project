@@ -1,30 +1,22 @@
 'use client'
 
-import styles from './page.module.css'
-import { useState } from 'react'
+import { useAuth } from '@/context/auth-context'
 import { Button } from '@foleon/ui'
-import { retriveToken } from '@/services/auth'
-import { useRouter } from 'next/navigation'
+import styles from './page.module.css'
 import Image from 'next/image'
 
 export default function Home() {
-  const [projects, setProjects] = useState<any>([])
-  const router = useRouter()
-
-  function handleLogin() {
-    retriveToken()
-    router.push('/dashboard')
-  }
+  const { login } = useAuth()
 
   return (
     <>
       <header className={styles.header}>
         <Image src="/logo.svg" width={130} height={38} alt="Logo" />
-        <Button label={'Login'} onClick={handleLogin} />
+        <Button label={'Login'} onClick={login} />
       </header>
       <main className={styles.main}>
         <h1 className={styles.title}>Hey there! 👋</h1>
-        <Button label={'Login to continue'} onClick={handleLogin} />
+        <Button label={'Login to continue'} onClick={login} />
       </main>
     </>
   )
