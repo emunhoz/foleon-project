@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/emunhoz/foleon-project/compare/@foleon/ui@0.4.0...@foleon/ui@0.5.0) (2023-05-19)
+
+### Features
+
+- adding empty state component ([53b4b10](https://github.com/emunhoz/foleon-project/commit/53b4b10e9f15c9a655b4fac8d84b7a5123db798f))
+
 # [0.4.0](https://github.com/emunhoz/foleon-project/compare/@foleon/ui@0.3.3...@foleon/ui@0.4.0) (2023-05-19)
 
 ### Features
