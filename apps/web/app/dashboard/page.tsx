@@ -10,6 +10,7 @@ import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 import { Button, EmptyState, ListItem, SearchBar } from '@foleon/ui'
 import Link from 'next/link'
+import toast from 'react-hot-toast'
 
 export default function Dashboard() {
   const [projects, setProjects] = useState<ProjectsProps>()
@@ -20,8 +21,15 @@ export default function Dashboard() {
   }, [])
 
   async function fetchAllProjects(pageNumber: number) {
-    const resp = await retriveAllProjects(pageNumber)
-    setProjects(resp.data)
+    const loadingToast = toast.loading('Loading data...')
+    try {
+      const resp = await retriveAllProjects(pageNumber)
+      setProjects(resp.data)
+    } catch (error) {
+      toast.error('Something went wrong!')
+    } finally {
+      toast.dismiss(loadingToast)
+    }
   }
 
   async function searchProducts(e: React.FormEvent<HTMLFormElement>) {
@@ -31,14 +39,19 @@ export default function Dashboard() {
     const formData = new FormData(form)
 
     const formJson = Object.fromEntries(formData.entries())
+
+    if (formJson.searchList === '') return fetchAllProjects(1)
     setSearchBy(String(formJson.searchList))
-    const resp = await searchProjectsByName(String(formJson.searchList))
 
-    if (formJson.searchList === '') {
-      fetchAllProjects(1)
+    const loadingToast = toast.loading('Searching for name...')
+    try {
+      const resp = await searchProjectsByName(String(formJson.searchList))
+      setProjects(resp.data)
+    } catch (error) {
+      toast.error('Something went wrong!')
+    } finally {
+      toast.dismiss(loadingToast)
     }
-
-    setProjects(resp.data)
   }
 
   return (

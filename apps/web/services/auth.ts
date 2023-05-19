@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { HTTP_CLIENT } from './api'
 
 export async function retriveToken() {
@@ -9,6 +10,8 @@ export async function retriveToken() {
         client_secret: String(process.env.NEXT_PUBLIC_CLIENT_SECRET),
       })
     )
+
+    toast.success('Welcome 👋', { duration: 4000 })
 
     return resp
   } catch (error) {

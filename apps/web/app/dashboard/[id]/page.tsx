@@ -9,6 +9,7 @@ import {
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
 import { EmptyState } from '@foleon/ui'
+import { toast } from 'react-hot-toast'
 
 interface PublicationPageParams {
   params: {
@@ -20,9 +21,16 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
   const [project, setProject] = useState<ProjectsProps>()
 
   useEffect(() => {
+    const loadingToast = toast.loading('Loading...')
     async function fetchProject() {
-      const resp = await retriveProjectById(params.id)
-      setProject(resp.data)
+      try {
+        const resp = await retriveProjectById(params.id)
+        setProject(resp.data)
+      } catch (error) {
+        toast.error('Something went wrong!')
+      } finally {
+        toast.dismiss(loadingToast)
+      }
     }
     fetchProject()
   }, [])
