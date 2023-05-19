@@ -12,6 +12,6 @@ export async function retriveToken() {
 
     return resp
   } catch (error) {
-    return
+    return console.error(error)
   }
 }
