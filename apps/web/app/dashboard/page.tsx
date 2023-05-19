@@ -48,14 +48,16 @@ export default function Dashboard() {
         </form>
       </div>
       <ul className={styles.list}>
-        {projects?._embedded?.title.map((project: any) => (
-          <li className={styles.listItem} key={project.id}>
-            <div className={styles.listItemTitle}>{project.name}</div>
-            <small className={styles.listItemDate}>
-              {militaryDate(project.created_on)}
-            </small>
-          </li>
-        ))}
+        {projects?._embedded?.title.map(
+          (project: { id: number; name: string; created_on: Date }) => (
+            <li className={styles.listItem} key={project.id}>
+              <div className={styles.listItemTitle}>{project.name}</div>
+              <small className={styles.listItemDate}>
+                {militaryDate(project.created_on)}
+              </small>
+            </li>
+          )
+        )}
       </ul>
 
       <div className={styles.pagination}>
