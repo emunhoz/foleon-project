@@ -29,3 +29,7 @@
   font-size: var(--size-font-large);
   padding: 12px 24px;
 }
+
+.storybook-button[disabled] {
+  opacity: .2;
+}
