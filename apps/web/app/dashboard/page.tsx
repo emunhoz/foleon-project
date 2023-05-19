@@ -53,21 +53,21 @@ export default function Dashboard() {
             </small>
           </li>
         ))}
-
-        <div className={styles.pagination}>
-          <Button
-            label="Previous page"
-            disabled={projects.page === 1}
-            onClick={() => fetchAllProjects(projects.page - 1)}
-          />
-
-          <Button
-            label="Next page"
-            disabled={projects.page === projects.page_count}
-            onClick={() => fetchAllProjects(projects.page + 1)}
-          />
-        </div>
       </ul>
+
+      <div className={styles.pagination}>
+        <Button
+          label="Previous page"
+          disabled={projects.page === 1}
+          onClick={() => fetchAllProjects(projects.page - 1)}
+        />
+
+        <Button
+          label="Next page"
+          disabled={projects.page === projects.page_count}
+          onClick={() => fetchAllProjects(projects.page + 1)}
+        />
+      </div>
     </main>
   )
 }
