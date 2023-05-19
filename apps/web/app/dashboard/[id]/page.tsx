@@ -1,10 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
 import styles from './page.module.css'
-import { retriveProjectById } from '@/services/projects'
+import {
+  ProjectDetailsProps,
+  ProjectsProps,
+  retriveProjectById,
+} from '@/services/projects'
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
 import { EmptyState } from '@foleon/ui'
+import { AxiosResponse } from 'axios'
 
 interface PublicationPageParams {
   params: {
@@ -13,12 +18,11 @@ interface PublicationPageParams {
 }
 
 export default function PublicationInfoId({ params }: PublicationPageParams) {
-  const [project, setProject] = useState<any>([])
+  const [project, setProject] = useState<ProjectsProps>()
 
   useEffect(() => {
     async function fetchProject() {
-      const resp: any = await retriveProjectById(params.id)
-      console.log(resp, 'resp')
+      const resp: AxiosResponse<any> = await retriveProjectById(params.id)
       setProject(resp.data)
     }
     fetchProject()
@@ -43,45 +47,36 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
       </div>
       <main className={styles.main}>
         <h1 className={styles.title}>Project ID: {params.id}</h1>
-        {project._embedded && (
+        {project?._embedded && (
           <ul className={styles.list}>
-            {project._embedded?.edition.map(
-              (project: {
-                uid: number
-                category: string
-                created_on: Date
-                status: string
-              }) => (
-                <li className={styles.listItem} key={project.uid}>
-                  <div className={styles.listItemWrapper}>
-                    <div className={styles.listItemWrapperLabel}>Category:</div>
-                    <div className={styles.listItemWrapperValue}>
-                      {project.category}
-                    </div>
+            {project._embedded.edition.map((project: ProjectDetailsProps) => (
+              <li className={styles.listItem} key={project.uid}>
+                <div className={styles.listItemWrapper}>
+                  <div className={styles.listItemWrapperLabel}>Category:</div>
+                  <div className={styles.listItemWrapperValue}>
+                    {project.category}
                   </div>
+                </div>
 
-                  <div className={styles.listItemWrapper}>
-                    <div className={styles.listItemWrapperLabel}>
-                      Created at:
-                    </div>
-                    <div className={styles.listItemWrapperValue}>
-                      {militaryDate(project.created_on)}
-                    </div>
+                <div className={styles.listItemWrapper}>
+                  <div className={styles.listItemWrapperLabel}>Created at:</div>
+                  <div className={styles.listItemWrapperValue}>
+                    {militaryDate(project.created_on)}
                   </div>
+                </div>
 
-                  <div className={styles.listItemWrapper}>
-                    <div className={styles.listItemWrapperLabel}>Status:</div>
-                    <div className={styles.listItemWrapperValue}>
-                      {project.status}
-                    </div>
+                <div className={styles.listItemWrapper}>
+                  <div className={styles.listItemWrapperLabel}>Status:</div>
+                  <div className={styles.listItemWrapperValue}>
+                    {project.status}
                   </div>
-                </li>
-              )
-            )}
+                </div>
+              </li>
+            ))}
           </ul>
         )}
 
-        {project._embedded?.edition.length === 0 && (
+        {project?._embedded?.edition.length === 0 && (
           <EmptyState title={`Project details not found!`} />
         )}
       </main>

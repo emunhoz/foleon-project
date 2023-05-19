@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import {
-  AllProjectsProps,
+  ProjectsProps,
   retriveAllProjects,
   searchProjectsByName,
 } from '@/services/projects'
@@ -10,9 +10,10 @@ import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 import { Button, EmptyState, ListItem, SearchBar } from '@foleon/ui'
 import Link from 'next/link'
+import { AxiosResponse } from 'axios'
 
 export default function Dashboard() {
-  const [projects, setProjects] = useState<any>([])
+  const [projects, setProjects] = useState<ProjectsProps>()
   const [searchBy, setSearchBy] = useState<string>('')
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function Dashboard() {
   }, [])
 
   async function fetchAllProjects(pageNumber: number) {
-    const resp: AllProjectsProps = await retriveAllProjects(pageNumber)
+    const resp: AxiosResponse<any> = await retriveAllProjects(pageNumber)
     setProjects(resp.data)
   }
 
@@ -32,7 +33,7 @@ export default function Dashboard() {
 
     const formJson = Object.fromEntries(formData.entries())
     setSearchBy(String(formJson.searchList))
-    const resp: AllProjectsProps = await searchProjectsByName(
+    const resp: AxiosResponse<any> = await searchProjectsByName(
       String(formJson.searchList)
     )
 
@@ -55,8 +56,8 @@ export default function Dashboard() {
       </div>
 
       <div className={styles.paginationInfo}>
-        <div>Total items: {projects.total_items}</div>
-        <div>Items per page: {projects.count}</div>
+        <div>Total items: {projects?.total_items}</div>
+        <div>Items per page: {projects?.count}</div>
       </div>
 
       <ul className={styles.list}>
@@ -76,23 +77,25 @@ export default function Dashboard() {
         <EmptyState title={`Project ${searchBy} not found!`} />
       )}
 
-      <div className={styles.pagination}>
-        <Button
-          label="Previous page"
-          disabled={projects.page <= 1}
-          onClick={() => fetchAllProjects(projects.page - 1)}
-        />
+      {projects && (
+        <div className={styles.pagination}>
+          <Button
+            label="Previous page"
+            disabled={projects.page <= 1}
+            onClick={() => fetchAllProjects(projects!.page - 1)}
+          />
 
-        <div className={styles.pageNumber}>
-          {projects.page}/{projects.page_count}
+          <div className={styles.pageNumber}>
+            {projects!.page}/{projects!.page_count}
+          </div>
+
+          <Button
+            label="Next page"
+            disabled={projects.page === projects.page_count}
+            onClick={() => fetchAllProjects(projects!.page + 1)}
+          />
         </div>
-
-        <Button
-          label="Next page"
-          disabled={projects.page === projects.page_count}
-          onClick={() => fetchAllProjects(projects.page + 1)}
-        />
-      </div>
+      )}
     </main>
   )
 }

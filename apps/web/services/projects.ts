@@ -1,18 +1,26 @@
 import { HTTP_CLIENT } from './api'
 
-export type AllProjectsProps = {
-  data: {
-    projects: {
-      _embedded: {
-        title: [{
-          name: string,
-          id: number
-          created_on: string
-        }]
-        }
-      };
-    page: number;
-    page_count: number
+export interface ProjectTitleProps { 
+  id: number;
+  name: string;
+  created_on: Date
+}
+
+export interface ProjectDetailsProps {
+  uid: number
+  category: string
+  created_on: Date
+  status: string
+}
+
+export type ProjectsProps = {
+  page: number;
+  page_count: number
+  total_items: number
+  count: number
+  _embedded: {
+    edition: ProjectDetailsProps[];
+    title: ProjectTitleProps[]
   }
 }
 
