@@ -8,11 +8,12 @@ import {
 } from '@/services/projects'
 import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
-import { Button, SearchBar } from '@foleon/ui'
+import { Button, EmptyState, SearchBar } from '@foleon/ui'
 import Link from 'next/link'
 
 export default function Dashboard() {
   const [projects, setProjects] = useState<any>([])
+  const [searchBy, setSearchBy] = useState<string>('')
 
   useEffect(() => {
     fetchAllProjects(1)
@@ -30,6 +31,7 @@ export default function Dashboard() {
     const formData = new FormData(form)
 
     const formJson = Object.fromEntries(formData.entries())
+    setSearchBy(String(formJson.searchList))
     const resp: AllProjectsProps = await searchProjectsByName(
       String(formJson.searchList)
     )
@@ -96,10 +98,14 @@ export default function Dashboard() {
         )}
       </ul>
 
+      {searchBy.length > 0 && projects?._embedded?.title?.length === 0 && (
+        <EmptyState title={`Project ${searchBy} not found!`} />
+      )}
+
       <div className={styles.pagination}>
         <Button
           label="Previous page"
-          disabled={projects.page === 1}
+          disabled={projects.page <= 1}
           onClick={() => fetchAllProjects(projects.page - 1)}
         />
 

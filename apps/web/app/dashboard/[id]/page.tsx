@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import { retriveProjectById } from '@/services/projects'
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
+import { EmptyState } from '@foleon/ui'
 
 interface PublicationPageParams {
   params: {
@@ -81,7 +82,7 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
         )}
 
         {project._embedded?.edition.length === 0 && (
-          <div>Nothing to show here!</div>
+          <EmptyState title={`Project details not found!`} />
         )}
       </main>
     </>
