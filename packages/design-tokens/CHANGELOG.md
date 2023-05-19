@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/emunhoz/foleon-project/compare/@foleon/design-tokens@0.3.2...@foleon/design-tokens@0.3.3) (2023-05-19)
+
+**Note:** Version bump only for package @foleon/design-tokens
+
 ## [0.3.2](https://github.com/emunhoz/foleon-project/compare/@foleon/design-tokens@0.3.1...@foleon/design-tokens@0.3.2) (2023-05-19)
 
 **Note:** Version bump only for package @foleon/design-tokens
