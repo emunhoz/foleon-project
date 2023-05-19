@@ -1,0 +1,38 @@
+.listItem {
+  background: #1f252d;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 14px;
+  border-radius: 1.1em;
+  display: flex;
+}
+
+.listItemIcon {
+  margin-right: 14px;
+  min-width: 38px;
+}
+
+.listItemWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.listItemWrapperItem {
+  margin-right: 10px;
+}
+
+.listItemTitle {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.listItemLabel {
+  font-size: 14px;
+  color: #8398b1;
+  margin-bottom: 5px;
+}
+
+.listItemDate {
+  font-size: 14px;
+}
