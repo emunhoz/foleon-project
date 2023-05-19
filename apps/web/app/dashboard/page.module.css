@@ -15,45 +15,7 @@
 
 .list {
   list-style: none;
-}
-
-.listItem {
-  background: var(--color-brand-dark);
-  color: var(--color-base-white);
-  padding: 20px;
-  margin-bottom: 14px;
-  border-radius: 1.1em;
-  display: flex;
-}
-
-.listItemIcon {
-  margin-right: 14px;
-  min-width: 38px;
-}
-
-.listItemWrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.listItemWrapperItem {
-  margin-right: 10px;
-}
-
-.listItemTitle {
-  font-weight: 600;
-  font-size: var(--size-font-medium);
-}
-
-.listItemLabel {
-  font-size: var(--size-font-medium);
-  color: var(--color-brand-light);
-  margin-bottom: 5px;
-}
-
-.listItemDate {
-  font-size: var(--size-font-medium);
+  margin-bottom: 40px;
 }
 
 .paginationInfo {
