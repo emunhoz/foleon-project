@@ -1,3 +1,37 @@
+## Foleon application
+
+## 🗂 Monorepo structure
+
+| Package                                               | Description                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [`@foleon/web`](./apps/web)                           | Front end application create with NextJS                                               |
+| [`@foleon/ui`](./packages/ui)                         | React library components with [stories](https://storybook.js.org/)                     |
+| [`@foleon/design-tokens`](./packages/design-tokens)   | Design tokens (colors, font)                                                           |
+
+## 💥 Features
+
+- Login page with credentials
+- Display a list of (my) publications
+- Search the publications by name
+- Display a publication’s information
+
+## ⚒️ Stack
+- Lerna with PNPM monorepo
+- React (typescript)
+- Next13
+- Storybook
+- Github actions with Release
+- Github actions with Tests
+- Design tokens with `style-dictionary` https://amzn.github.io/style-dictionary/#/
+- Component library with React
+- Conventional commits
+- Semantic releases
+
+## 🌐 Links
+
+- Front end application: https://foleon-project-web.vercel.app/
+- Components: https://foleon-project-ui.vercel.app
+
 ## ⚠️ Requirements
 
 - Node >= `v18.12.1`
@@ -17,4 +51,28 @@ In the root folder run following commands:
 
 ```bash
   pnpm dev
+```
+
+## 🚦 Testing
+
+In the root folder run following commands:
+
+Unit tests
+
+```bash
+  pnpm test
+```
+
+E2E tests
+
+1. Running the project
+
+```bash
+  pnpm dev
+```
+
+2. Running Cypress (new terminal)
+
+```bash
+  pnpm --filter @foleon/web cypress:open
 ```
