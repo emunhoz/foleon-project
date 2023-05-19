@@ -15,6 +15,7 @@
 - Search the publications by name
 - Display a publication’s information
 - Pagination
+- Mobile first
 
 ## ⚒️ Stack
 - Lerna with PNPM monorepo
