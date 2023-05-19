@@ -1,0 +1,53 @@
+.searchBar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  background: #354354;
+  border-radius: 1.1em;
+}
+
+.searchBarLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+.searchBarIcon {
+  width: auto;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  max-width: 52px;
+}
+
+.searchBarInput {
+  display: flex;
+  font-size: 16px;
+  color: #fff;
+  background: #354354;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 1.1em;
+  letter-spacing: 0.75px;
+}
+
+input.searchBarInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  font-weight: 100;
+  opacity: 1; /* Firefox */
+}
+
+/* clears the ‘X’ from Internet Explorer */
+.searchBarInput::-ms-clear { display: none; width : 0; height: 0; }
+.searchBarInput::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+.searchBarInput::-webkit-search-decoration,
+.searchBarInput::-webkit-search-cancel-button,
+.searchBarInput::-webkit-search-results-button,
+.searchBarInput::-webkit-search-results-decoration { display: none; }
