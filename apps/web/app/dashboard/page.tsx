@@ -88,7 +88,7 @@ export default function Dashboard() {
 
           <Button
             label="Next page"
-            disabled={projects.page === projects.page_count}
+            disabled={projects.page >= projects.page_count}
             onClick={() => fetchAllProjects(projects.page + 1)}
           />
         </div>
