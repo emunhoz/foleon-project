@@ -17,8 +17,6 @@ const AuthContextProvider = ({ children }: any) => {
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const navigate = useRouter()
 
-  console.log(!!getCookie('@foleon:token'), "!!getCookie('@foleon:token')")
-
   useEffect(() => {
     if (!!getCookie('@foleon:token')) {
       navigate.push('/dashboard')

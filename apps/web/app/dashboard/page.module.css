@@ -5,15 +5,28 @@
   margin: 0px auto;
 }
 
+.loader span span {
+  margin-bottom: 14px;
+}
+
+.searchBarItem {
+  margin-bottom: 20px;
+}
+
 .list {
   list-style: none;
 }
 
 .listItem {
-  background: #232a34;
+  background: #1f252d;
   color: #fff;
   padding: 20px;
   margin-bottom: 14px;
+  border-radius: 1.1em;
+}
+
+.listItem:last-of-type {
+  margin-bottom: 60px;
 }
 
 .listItemTitle {
@@ -22,4 +35,10 @@
 
 .listItemDate {
   color: #c3c3c3;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

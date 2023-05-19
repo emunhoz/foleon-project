@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: #242e3b;
     --background-item: #fff;
     --background-item-color: #000;
   }
@@ -46,6 +46,6 @@ a {
   }
 
   body {
-    background: var(--color-base-gray-dark);
+    background: #242e3b;
   }
 }

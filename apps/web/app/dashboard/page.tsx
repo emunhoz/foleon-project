@@ -1,25 +1,49 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { retriveAllProjects } from '@/services/projects'
+import { retriveAllProjects, searchProjectsByName } from '@/services/projects'
 import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
+import { Button, SearchBar } from '@foleon/ui'
 
 export default function Dashboard() {
   const [projects, setProjects] = useState<any>([])
 
   useEffect(() => {
-    fetchAllProjects()
+    fetchAllProjects(1)
   }, [])
 
-  async function fetchAllProjects() {
-    const resp: any = await retriveAllProjects()
+  async function fetchAllProjects(pageNumber: number) {
+    const resp: any = await retriveAllProjects(pageNumber)
     setProjects(resp.data)
-    console.log(resp.data, 'all projects')
+  }
+
+  async function searchProducts(e: {
+    preventDefault: () => void
+    target: any
+  }) {
+    e.preventDefault()
+
+    const form = e.target
+    const formData = new FormData(form)
+
+    const formJson = Object.fromEntries(formData.entries())
+    const resp: any = await searchProjectsByName(String(formJson.searchList))
+
+    if (formJson.searchList === '') {
+      fetchAllProjects(1)
+    }
+
+    setProjects(resp.data)
   }
 
   return (
     <main className={styles.main}>
+      <div className={styles.searchBarItem}>
+        <form onSubmit={searchProducts}>
+          <SearchBar labelName="searchList" onChange={console.log} />
+        </form>
+      </div>
       <ul className={styles.list}>
         {projects?._embedded?.title.map((project: any) => (
           <li className={styles.listItem} key={project.id}>
@@ -29,6 +53,20 @@ export default function Dashboard() {
             </small>
           </li>
         ))}
+
+        <div className={styles.pagination}>
+          <Button
+            label="Previous page"
+            disabled={projects.page === 1}
+            onClick={() => fetchAllProjects(projects.page - 1)}
+          />
+
+          <Button
+            label="Next page"
+            disabled={projects.page === projects.page_count}
+            onClick={() => fetchAllProjects(projects.page + 1)}
+          />
+        </div>
       </ul>
     </main>
   )
