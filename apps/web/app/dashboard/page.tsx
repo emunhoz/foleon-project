@@ -1,7 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { retriveAllProjects, searchProjectsByName } from '@/services/projects'
+import {
+  AllProjectsProps,
+  retriveAllProjects,
+  searchProjectsByName,
+} from '@/services/projects'
 import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 import { Button, SearchBar } from '@foleon/ui'
@@ -14,21 +18,20 @@ export default function Dashboard() {
   }, [])
 
   async function fetchAllProjects(pageNumber: number) {
-    const resp: any = await retriveAllProjects(pageNumber)
+    const resp: AllProjectsProps = await retriveAllProjects(pageNumber)
     setProjects(resp.data)
   }
 
-  async function searchProducts(e: {
-    preventDefault: () => void
-    target: any
-  }) {
+  async function searchProducts(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    const form = e.target
+    const form = e.target as unknown as HTMLFormElement
     const formData = new FormData(form)
 
     const formJson = Object.fromEntries(formData.entries())
-    const resp: any = await searchProjectsByName(String(formJson.searchList))
+    const resp: AllProjectsProps = await searchProjectsByName(
+      String(formJson.searchList)
+    )
 
     if (formJson.searchList === '') {
       fetchAllProjects(1)
@@ -41,7 +44,7 @@ export default function Dashboard() {
     <main className={styles.main}>
       <div className={styles.searchBarItem}>
         <form onSubmit={searchProducts}>
-          <SearchBar labelName="searchList" onChange={console.log} />
+          <SearchBar labelName="searchList" />
         </form>
       </div>
       <ul className={styles.list}>
