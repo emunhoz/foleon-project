@@ -42,15 +42,47 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
       </div>
       <main className={styles.main}>
         <h1 className={styles.title}>Project ID: {params.id}</h1>
-        <ul className={styles.list}>
-          {project._embedded?.edition.map((project: any) => (
-            <li className={styles.listItem} key={project.uid}>
-              <div>Category: {project.category}</div>
-              <div>Created at: {militaryDate(project.created_on)}</div>
-              <div>Status: {project.status}</div>
-            </li>
-          ))}
-        </ul>
+        {project._embedded && (
+          <ul className={styles.list}>
+            {project._embedded?.edition.map(
+              (project: {
+                uid: number
+                category: string
+                created_on: Date
+                status: string
+              }) => (
+                <li className={styles.listItem} key={project.uid}>
+                  <div className={styles.listItemWrapper}>
+                    <div className={styles.listItemWrapperLabel}>Category:</div>
+                    <div className={styles.listItemWrapperValue}>
+                      {project.category}
+                    </div>
+                  </div>
+
+                  <div className={styles.listItemWrapper}>
+                    <div className={styles.listItemWrapperLabel}>
+                      Created at:
+                    </div>
+                    <div className={styles.listItemWrapperValue}>
+                      {militaryDate(project.created_on)}
+                    </div>
+                  </div>
+
+                  <div className={styles.listItemWrapper}>
+                    <div className={styles.listItemWrapperLabel}>Status:</div>
+                    <div className={styles.listItemWrapperValue}>
+                      {project.status}
+                    </div>
+                  </div>
+                </li>
+              )
+            )}
+          </ul>
+        )}
+
+        {project._embedded?.edition.length === 0 && (
+          <div>Nothing to show here!</div>
+        )}
       </main>
     </>
   )
