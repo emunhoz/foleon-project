@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  background: #354354;
+  background: var(--color-brand-medium-light);
   border-radius: 1.1em;
 }
 
@@ -27,9 +27,9 @@
 
 .searchBarInput {
   display: flex;
-  font-size: 16px;
-  color: #fff;
-  background: #354354;
+  font-size: var(--size-font-medium);
+  color: var(--color-base-white);
+  background: var(--color-brand-medium-light);
   border: none;
   outline: none;
   width: 100%;
@@ -37,7 +37,7 @@
 }
 
 input.searchBarInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #8aa3c4;
+  color: var(--color-brand-light);
   font-weight: 100;
   opacity: 1; /* Firefox */
 }

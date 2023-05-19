@@ -24,15 +24,15 @@
 
 .listItemTitle {
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--size-font-medium);
 }
 
 .listItemLabel {
-  font-size: 14px;
+  font-size: var(--size-font-small);
   color: var(--color-brand-light);
   margin-bottom: 5px;
 }
 
 .listItemDate {
-  font-size: 14px;
+  font-size: var(--size-font-medium);
 }

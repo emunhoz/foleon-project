@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: var(--size-font-medium);
   margin-bottom: 20px;
   color: var(--color-base-white);
 }
@@ -24,7 +24,7 @@
 }
 
 .listItem {
-  font-size: 14px;
+  font-size: var(--size-font-medium);
   line-height: 24px;
 }
 

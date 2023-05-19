@@ -9,9 +9,9 @@
 
 .empty-state-title {
   margin: 0;
-  font-size: 24px;
+  font-size: var(--size-font-large);
   font-weight: 300;
-  color: #fff;
+  color: var(--color-base-white);
   margin-bottom: 80px;
 }
 
@@ -21,6 +21,6 @@
 }
 
 .empty-state-message {
-  font-size: 12px;
+  font-size: var(--size-font-small);
   color: #000;
 }

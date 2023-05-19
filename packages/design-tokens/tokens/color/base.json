@@ -5,7 +5,8 @@
       "primary": { "value": "#03b1ff" },
       "purple": { "value": "#9201dc" },
       "dark": { "value": "#1f252d" },
-      "light": { "value": "#8398b1" }
+      "light": { "value": "#8398b1" },
+      "mediumLight": { "value": "#354354" }
     },
     "base": {
       "gray": {
