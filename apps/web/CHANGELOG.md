@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.7.0...@foleon/web@0.8.0) (2023-05-19)
+
+### Features
+
+- adding styles to details id page ([4a6a2cd](https://github.com/emunhoz/foleon-project/commit/4a6a2cd4d79d801cbf23ddda1960b639430e6e5e))
+
 # [0.7.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.6.3...@foleon/web@0.7.0) (2023-05-19)
 
 ### Features
