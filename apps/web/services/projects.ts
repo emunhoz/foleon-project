@@ -30,6 +30,20 @@ export async function retriveAllProjects(pageNumber: number) {
   })
 }
 
+export async function retriveProjectById(projectId: number) {
+  return await HTTP_CLIENT.get(`/v2/magazine/edition`, {
+    params: {
+      filter: [
+        {
+          field: 'title',
+          type: 'eq',
+          value: projectId
+        }
+      ]
+    }
+  })
+}
+
 export async function searchProjectsByName(name: string) {
   return await HTTP_CLIENT.get(`/v2/magazine/title`, {
     params: {

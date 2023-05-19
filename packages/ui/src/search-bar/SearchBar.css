@@ -34,11 +34,10 @@
   outline: none;
   width: 100%;
   border-radius: 1.1em;
-  letter-spacing: 0.75px;
 }
 
 input.searchBarInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #fff;
+  color: #8aa3c4;
   font-weight: 100;
   opacity: 1; /* Firefox */
 }
