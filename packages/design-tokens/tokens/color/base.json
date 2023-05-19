@@ -6,7 +6,8 @@
       "purple": { "value": "#9201dc" },
       "dark": { "value": "#1f252d" },
       "light": { "value": "#8398b1" },
-      "mediumLight": { "value": "#354354" }
+      "mediumLight": { "value": "#354354" },
+      "foreground": { "value": "#242e3b" }
     },
     "base": {
       "gray": {

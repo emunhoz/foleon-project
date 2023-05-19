@@ -6,10 +6,6 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-    --foreground-rgb: #242e3b;
-    --background-item: #fff;
-    --background-item-color: #000;
 }
 
 * {
@@ -25,7 +21,7 @@ body {
 }
 
 body {
-  background: var(--foreground-rgb);
+  background: var(--color-brand-foreground);
 }
 
 a {

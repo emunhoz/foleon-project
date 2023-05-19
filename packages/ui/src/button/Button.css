@@ -9,8 +9,9 @@
 }
 .storybook-button--primary {
   color: var(--color-base-white);
-  background: var(--color-brand-main);
+  background: var(--color-brand-foreground);
   font-size: var(--size-font-base);
+  border: 1px solid var(--color-brand-medium-light);
 }
 .storybook-button--secondary {
   color: var(--color-brand-main);
