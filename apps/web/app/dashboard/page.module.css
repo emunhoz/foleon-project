@@ -1,12 +1,26 @@
 .main {
   display: grid;
   max-width: 1280px;
-  padding: 26px;
+  padding: 0 26px 26px 26px;
   margin: 0px auto;
 }
 
 .loader span span {
   margin-bottom: 14px;
+}
+
+.headerIntern {
+  display: flex;
+  padding: 20px;
+}
+
+.headerInternWrapper {
+  max-width: 1280px;
+  margin: 0px auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .searchBarItem {

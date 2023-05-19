@@ -11,8 +11,10 @@ export default function Home() {
   return (
     <>
       <header className={styles.header}>
-        <Image src="/logo.svg" width={130} height={38} alt="Logo" />
-        <Button label={'Login'} onClick={login} />
+        <div className={styles.headerWrapper}>
+          <Image src="/logo.svg" width={130} height={38} alt="Logo" />
+          <Button label={'Login'} onClick={login} />
+        </div>
       </header>
       <main className={styles.main}>
         <h1 className={styles.title}>Hey there! 👋</h1>
