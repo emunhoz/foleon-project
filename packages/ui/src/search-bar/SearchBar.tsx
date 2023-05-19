@@ -18,7 +18,7 @@ type SearchBarProps = InputHTMLAttributes<HTMLInputElement> & {
   /**
    * onChange callback
    */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export function SearchBar({
