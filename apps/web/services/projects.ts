@@ -1,5 +1,20 @@
 import { HTTP_CLIENT } from './api'
 
+export type AllProjectsProps = {
+  data: {
+    projects: {
+      _embedded: {
+        title: [{
+          name: string,
+          id: number
+        }]
+        }
+      };
+    page: number;
+    page_count: number
+  }
+}
+
 export async function retriveAllProjects(pageNumber: number) {
   return await HTTP_CLIENT.get(`/v2/magazine/title`, {
     params: {
