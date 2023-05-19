@@ -14,6 +14,7 @@
 - Display a list of (my) publications
 - Search the publications by name
 - Display a publication’s information
+- Pagination
 
 ## ⚒️ Stack
 - Lerna with PNPM monorepo
