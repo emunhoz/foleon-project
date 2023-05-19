@@ -16,6 +16,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@foleon/design-tokens':
+        specifier: workspace:^
+        version: link:../../packages/design-tokens
       '@foleon/ui':
         specifier: workspace:^
         version: link:../../packages/ui

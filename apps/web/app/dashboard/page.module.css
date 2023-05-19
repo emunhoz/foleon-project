@@ -18,8 +18,8 @@
 }
 
 .listItem {
-  background: #1f252d;
-  color: #fff;
+  background: var(--color-brand-dark);
+  color: var(--color-base-white);
   padding: 20px;
   margin-bottom: 14px;
   border-radius: 1.1em;
@@ -48,7 +48,7 @@
 
 .listItemLabel {
   font-size: 14px;
-  color: #8398b1;
+  color: var(--color-brand-light);
   margin-bottom: 5px;
 }
 
@@ -62,13 +62,14 @@
   margin-bottom: 20px;
   line-height: 22px;
   font-size: 14px;
-  color: #8398b1;
+  color: var(--color-brand-light);
 }
 
 .pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--color-brand-light);
 }
 
 .pageNumber { 

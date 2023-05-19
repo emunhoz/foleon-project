@@ -3,12 +3,14 @@
     "brand": {
       "main": { "value": "#001945" },
       "primary": { "value": "#03b1ff" },
-      "purple": { "value": "#9201dc" }
+      "purple": { "value": "#9201dc" },
+      "dark": { "value": "#1f252d" },
+      "light": { "value": "#8398b1" }
     },
     "base": {
       "gray": {
         "light" : { "value": "#CCCCCC" },
-        "medium": { "value": "#999999" },
+        "medium": { "value": "#CBCBCB" },
         "dark"  : { "value": "#111111" }
       },
       "white": { "value": "FFF"}

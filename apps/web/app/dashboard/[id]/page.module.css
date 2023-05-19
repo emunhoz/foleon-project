@@ -16,6 +16,7 @@
 .title {
   font-size: 20px;
   margin-bottom: 20px;
+  color: var(--color-base-white);
 }
 
 .list {
@@ -34,11 +35,12 @@
 .listItemWrapperLabel {
   font-weight: 600;
   margin-right: 6px;
+  color: var(--color-base-white);
 }
 
 .listItemWrapperValue {
-  background: #1f252d;
+  background: var(--color-brand-dark);
   display: flex;
   padding: 2px;
-  color: #8398b1;
+  color: var(--color-brand-light);
 }
