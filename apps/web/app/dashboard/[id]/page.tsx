@@ -9,7 +9,6 @@ import {
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
 import { EmptyState } from '@foleon/ui'
-import { AxiosResponse } from 'axios'
 
 interface PublicationPageParams {
   params: {
@@ -22,7 +21,7 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
 
   useEffect(() => {
     async function fetchProject() {
-      const resp: AxiosResponse<any> = await retriveProjectById(params.id)
+      const resp = await retriveProjectById(params.id)
       setProject(resp.data)
     }
     fetchProject()
@@ -47,7 +46,7 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
       </div>
       <main className={styles.main}>
         <h1 className={styles.title}>Project ID: {params.id}</h1>
-        {project?._embedded && (
+        {project?._embedded?.edition && (
           <ul className={styles.list}>
             {project._embedded.edition.map((project: ProjectDetailsProps) => (
               <li className={styles.listItem} key={project.uid}>
@@ -76,7 +75,7 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
           </ul>
         )}
 
-        {project?._embedded?.edition.length === 0 && (
+        {project?._embedded?.edition?.length === 0 && (
           <EmptyState title={`Project details not found!`} />
         )}
       </main>

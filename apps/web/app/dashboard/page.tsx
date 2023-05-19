@@ -10,7 +10,6 @@ import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 import { Button, EmptyState, ListItem, SearchBar } from '@foleon/ui'
 import Link from 'next/link'
-import { AxiosResponse } from 'axios'
 
 export default function Dashboard() {
   const [projects, setProjects] = useState<ProjectsProps>()
@@ -21,7 +20,7 @@ export default function Dashboard() {
   }, [])
 
   async function fetchAllProjects(pageNumber: number) {
-    const resp: AxiosResponse<any> = await retriveAllProjects(pageNumber)
+    const resp = await retriveAllProjects(pageNumber)
     setProjects(resp.data)
   }
 
@@ -33,9 +32,7 @@ export default function Dashboard() {
 
     const formJson = Object.fromEntries(formData.entries())
     setSearchBy(String(formJson.searchList))
-    const resp: AxiosResponse<any> = await searchProjectsByName(
-      String(formJson.searchList)
-    )
+    const resp = await searchProjectsByName(String(formJson.searchList))
 
     if (formJson.searchList === '') {
       fetchAllProjects(1)
@@ -61,7 +58,7 @@ export default function Dashboard() {
       </div>
 
       <ul className={styles.list}>
-        {projects?._embedded?.title.map(
+        {projects?._embedded?.title?.map(
           (project: { id: number; name: string; created_on: Date }) => (
             <Link href={`/dashboard/${project.id}`} key={project.id}>
               <ListItem
@@ -82,17 +79,17 @@ export default function Dashboard() {
           <Button
             label="Previous page"
             disabled={projects.page <= 1}
-            onClick={() => fetchAllProjects(projects!.page - 1)}
+            onClick={() => fetchAllProjects(projects.page - 1)}
           />
 
           <div className={styles.pageNumber}>
-            {projects!.page}/{projects!.page_count}
+            {projects.page}/{projects.page_count}
           </div>
 
           <Button
             label="Next page"
             disabled={projects.page === projects.page_count}
-            onClick={() => fetchAllProjects(projects!.page + 1)}
+            onClick={() => fetchAllProjects(projects.page + 1)}
           />
         </div>
       )}

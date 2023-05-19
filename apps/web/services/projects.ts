@@ -1,5 +1,12 @@
 import { HTTP_CLIENT } from './api'
 
+export interface BaseFoleonApi {
+  page: number;
+  page_count: number
+  total_items: number
+  count: number
+}
+
 export interface ProjectTitleProps { 
   id: number;
   name: string;
@@ -13,19 +20,15 @@ export interface ProjectDetailsProps {
   status: string
 }
 
-export type ProjectsProps = {
-  page: number;
-  page_count: number
-  total_items: number
-  count: number
+export interface ProjectsProps extends BaseFoleonApi {
   _embedded: {
-    edition: ProjectDetailsProps[];
-    title: ProjectTitleProps[]
+    edition?: ProjectDetailsProps[];
+    title?: ProjectTitleProps[]
   }
 }
 
 export async function retriveAllProjects(pageNumber: number) {
-  return await HTTP_CLIENT.get(`/v2/magazine/title`, {
+  return await HTTP_CLIENT.get<ProjectsProps>(`/v2/magazine/title`, {
     params: {
       page: pageNumber ?? 1,
       limit: 20,
@@ -39,7 +42,7 @@ export async function retriveAllProjects(pageNumber: number) {
 }
 
 export async function retriveProjectById(projectId: number) {
-  return await HTTP_CLIENT.get(`/v2/magazine/edition`, {
+  return await HTTP_CLIENT.get<ProjectsProps>(`/v2/magazine/edition`, {
     params: {
       filter: [
         {
@@ -53,7 +56,7 @@ export async function retriveProjectById(projectId: number) {
 }
 
 export async function searchProjectsByName(name: string) {
-  return await HTTP_CLIENT.get(`/v2/magazine/title`, {
+  return await HTTP_CLIENT.get<ProjectsProps>(`/v2/magazine/title`, {
     params: {
       page: 1,
       limit: 20,
