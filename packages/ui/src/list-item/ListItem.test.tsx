@@ -6,7 +6,6 @@ describe('[Component]: ListItem', () => {
   test('render initial component', () => {
     render(<ListItem created_on="19/06/2023" name="My project" />)
 
-    screen.logTestingPlaygroundURL()
     expect(screen.getByText(/my project/i)).toBeDefined()
     expect(screen.getByText(/19\/06\/2023/i)).toBeDefined()
   })
