@@ -24,7 +24,7 @@ jobs:
 
       - name: Start app
         run: |
-          pnpm --filter @foleon/web start'
+          pnpm --filter @foleon/web start
           npx wait-on http://localhost:3000
         env:
           CI: true
