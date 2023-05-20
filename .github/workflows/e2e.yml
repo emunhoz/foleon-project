@@ -15,17 +15,18 @@ jobs:
         with:
           node-version: 18
 
-      - uses: pnpm/action-setup@v2
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8.5.1
-
-      - name: Install dependencies
-        run: pnpm install
+          run_install: |
+            - args: [--filter @foleon/web...]
 
       - name: Run E2E test with Cypress
         uses: cypress-io/github-action@v5
         with:
-          build: pnpm build
-          start: pnpm start
+          install: false
+          build: pnpm --filter @foleon/web build
+          command: pnpm --filter @foleon/web cypress:ci
+          start: pnpm --filter @foleon/web start
           wait-on: 'http://localhost:3000'
-          working-directory: apps/web
