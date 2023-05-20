@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "cypress:open": "npx cypress open",
-    "cypress:ci": "npx cypress run"
+    "cypress:ci": "./node_modules/.bin/cypress run"
   },
   "dependencies": {
     "@foleon/design-tokens": "workspace:^",
