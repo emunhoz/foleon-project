@@ -28,8 +28,7 @@ jobs:
 
       - name: Start app
         run: |
-          pnpm --filter @foleon/web start
-          npx wait-on http://localhost:3000
+          pnpm --filter @foleon/web start & npx wait-on http://localhost:3000
         env:
           CI: true
           NEXT_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
