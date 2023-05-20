@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "cypress:open": "cypress open",
-    "cypress:ci": "cypress run"
+    "cypress:open": "npx cypress open",
+    "cypress:ci": "npx cypress run"
   },
   "dependencies": {
     "@foleon/design-tokens": "workspace:^",
