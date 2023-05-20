@@ -27,15 +27,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Building `@foleon/web`
-        run: |
-          pnpm --filter @foleon/web build
-
-      - name: Start `@foleon/web` front end server
-        run: pnpm --filter @foleon/web start
-
       - name: Run E2E test with Cypress
         uses: cypress-io/github-action@v4
         with:
+          build: pnpm --filter @foleon/web build
+          start: pnpm --filter @foleon/web start
           command: pnpm --filter @foleon/web cypress:ci
-          browser: chrome
+          wait-on: 'http://localhost:3000'
