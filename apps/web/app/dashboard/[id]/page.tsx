@@ -33,7 +33,7 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
       }
     }
     fetchProject()
-  }, [])
+  }, [params])
 
   return (
     <>
