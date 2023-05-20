@@ -28,5 +28,8 @@ jobs:
           install: false
           build: pnpm --filter @foleon/web build
           command: pnpm --filter @foleon/web cypress:ci
-          start: pnpm --filter @foleon/web start
+          start: NEXT_PUBLIC_CLIENT_ID=${{secrets.CYPRESS_PUBLIC_CLIENT_ID}} NEXT_PUBLIC_CLIENT_SECRET= ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}} pnpm --filter @foleon/web start
           wait-on: 'http://localhost:3000'
+        env:
+          CYPRESS_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
+          CYPRESS_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
