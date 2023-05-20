@@ -1,7 +1,6 @@
 name: E2E Tests
 
 on:
-  push:
   workflow_run:
     workflows: ['Unit Tests']
     types:
@@ -28,9 +27,9 @@ jobs:
         run: pnpm install
 
       - name: Run E2E test with Cypress
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         with:
           build: pnpm --filter @foleon/web build
           start: pnpm --filter @foleon/web start
-          command: pnpm --filter @foleon/web cypress:ci
           wait-on: 'http://localhost:3000'
+          working-directory: apps/web
