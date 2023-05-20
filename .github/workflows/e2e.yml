@@ -22,14 +22,17 @@ jobs:
           run_install: |
             - args: [--filter @foleon/web...]
 
-      - name: Run E2E test with Cypress
-        uses: cypress-io/github-action@v5
-        with:
-          install: false
-          build: pnpm --filter @foleon/web build
-          command: pnpm --filter @foleon/web cypress:ci
-          start: NEXT_PUBLIC_CLIENT_ID=${{secrets.CYPRESS_PUBLIC_CLIENT_ID}} NEXT_PUBLIC_CLIENT_SECRET= ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}} pnpm --filter @foleon/web start
-          wait-on: 'http://localhost:3000'
+      - name: Start app
+        run: |
+          pnpm --filter @foleon/web start'
+          npx wait-on http://localhost:3000
         env:
-          CYPRESS_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
-          CYPRESS_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
+          CI: true
+          NEXT_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
+          NEXT_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
+
+      - name: Run E2E test with Cypress
+        run: |
+          pnpm --filter @foleon/web cypress:ci
+        env:
+          CI: true
