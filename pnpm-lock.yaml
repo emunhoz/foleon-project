@@ -7,6 +7,9 @@ importers:
       '@types/node':
         specifier: ^20.1.6
         version: 20.1.6
+      cypress:
+        specifier: ^12.12.0
+        version: 12.12.0
       lerna:
         specifier: ^6.6.2
         version: 6.6.2
