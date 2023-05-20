@@ -1,5 +1,5 @@
 describe('[E2E]: Publication list', () => {
-  it('display publications', () => {
+  it('display list of publications', () => {
     cy.visit('http://0.0.0.0:3000/')
     cy.contains('Login to continue').click()
 

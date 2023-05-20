@@ -1,5 +1,5 @@
 describe('[E2E]: Details', () => {
-  it('details page', () => {
+  it('publication details page', () => {
     cy.visit('http://0.0.0.0:3000/')
     cy.contains('Login to continue').click()
 
