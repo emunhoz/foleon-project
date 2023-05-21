@@ -1,5 +1,6 @@
 describe('[E2E]: Details', () => {
   it('publication details page', () => {
+    cy.wait(5000)
     cy.get('a')
     .contains('Ads')
     .click()
