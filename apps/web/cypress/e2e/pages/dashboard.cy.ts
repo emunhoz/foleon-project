@@ -1,8 +1,5 @@
 describe('[E2E]: Dashboard', () => {
   it('render login page with default components', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.get('button').contains('Login').click()
-
     cy.get('[alt="Logo"]').should('be.visible')
     cy.get('button').contains('Logout').should('be.enabled')
     cy.get('input[name="searchList"]').should('be.enabled')

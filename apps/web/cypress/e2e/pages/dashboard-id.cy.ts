@@ -1,8 +1,5 @@
 describe('[E2E]: Publication ID page', () => {
   it('render details page with default components', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.get('button').contains('Login').click()
-
     cy.get('a').contains('Name').click()
 
     cy.get('a').should('have.attr', 'href').and('contain', '/dashboard')
@@ -15,9 +12,6 @@ describe('[E2E]: Publication ID page', () => {
   })
 
   it('Link should back to dashboard page', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.contains('Login to continue').click()
-
     cy.get('a')
     .contains('Ads')
     .click()
@@ -29,9 +23,7 @@ describe('[E2E]: Publication ID page', () => {
   })
 
   it('render project not found component', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.contains('Login to continue').click()
-
+    cy.wait(5000)
     cy.get('a')
     .contains('Another project')
     .click()

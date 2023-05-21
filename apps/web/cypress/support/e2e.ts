@@ -16,5 +16,10 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+before(() => {
+  cy.visit('http://0.0.0.0:3000/')
+  cy.get('button').contains('Login').click()
+})
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
