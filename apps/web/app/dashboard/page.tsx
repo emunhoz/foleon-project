@@ -85,12 +85,14 @@ export default function Dashboard() {
             <ul className={styles.list}>
               {projects?.data?._embedded?.title?.map(
                 (project: { id: number; name: string; created_on: Date }) => (
-                  <Link href={`/dashboard/${project.id}`} key={project.id}>
-                    <ListItem
-                      name={project.name}
-                      created_on={militaryDate(project.created_on)}
-                    />
-                  </Link>
+                  <li key={project.id}>
+                    <Link href={`/dashboard/${project.id}`}>
+                      <ListItem
+                        name={project.name}
+                        created_on={militaryDate(project.created_on)}
+                      />
+                    </Link>
+                  </li>
                 )
               )}
             </ul>
