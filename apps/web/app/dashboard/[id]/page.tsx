@@ -9,7 +9,9 @@ import {
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
 import { EmptyState } from '@foleon/ui'
-import { toast } from 'react-hot-toast'
+
+import { useQuery } from '@tanstack/react-query'
+import Skeleton from 'react-loading-skeleton'
 
 interface PublicationPageParams {
   params: {
@@ -18,22 +20,16 @@ interface PublicationPageParams {
 }
 
 export default function PublicationInfoId({ params }: PublicationPageParams) {
-  const [project, setProject] = useState<ProjectsProps>()
+  const {
+    isLoading,
+    error,
+    data: project,
+  } = useQuery({
+    queryKey: ['projectById', params.id],
+    queryFn: () => retriveProjectById(params.id),
+  })
 
-  useEffect(() => {
-    const loadingToast = toast.loading('Loading...')
-    async function fetchProject() {
-      try {
-        const resp = await retriveProjectById(params.id)
-        setProject(resp.data)
-      } catch (error) {
-        toast.error('Something went wrong!')
-      } finally {
-        toast.dismiss(loadingToast)
-      }
-    }
-    fetchProject()
-  }, [params])
+  if (error) return 'Something went wrong!'
 
   return (
     <>
@@ -52,41 +48,62 @@ export default function PublicationInfoId({ params }: PublicationPageParams) {
           </svg>
         </Link>
       </div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Project ID: {params.id}</h1>
-        {project?._embedded?.edition && (
-          <ul className={styles.list}>
-            {project._embedded.edition.map((project: ProjectDetailsProps) => (
-              <li className={styles.listItem} key={project.uid}>
-                <div className={styles.listItemWrapper}>
-                  <div className={styles.listItemWrapperLabel}>Category:</div>
-                  <div className={styles.listItemWrapperValue}>
-                    {project.category}
-                  </div>
-                </div>
+      {isLoading && (
+        <main className={styles.main}>
+          <div className={styles.loader}>
+            <Skeleton
+              borderRadius={16}
+              count={3}
+              baseColor="#1f252d"
+              highlightColor="#283340"
+              height={19}
+            />
+          </div>
+        </main>
+      )}
+      {!isLoading && (
+        <main className={styles.main}>
+          <h1 className={styles.title}>Project ID: {params.id}</h1>
+          {project?.data._embedded?.edition && (
+            <ul className={styles.list}>
+              {project.data._embedded.edition.map(
+                (project: ProjectDetailsProps) => (
+                  <li className={styles.listItem} key={project.uid}>
+                    <div className={styles.listItemWrapper}>
+                      <div className={styles.listItemWrapperLabel}>
+                        Category:
+                      </div>
+                      <div className={styles.listItemWrapperValue}>
+                        {project.category}
+                      </div>
+                    </div>
 
-                <div className={styles.listItemWrapper}>
-                  <div className={styles.listItemWrapperLabel}>Created at:</div>
-                  <div className={styles.listItemWrapperValue}>
-                    {militaryDate(project.created_on)}
-                  </div>
-                </div>
+                    <div className={styles.listItemWrapper}>
+                      <div className={styles.listItemWrapperLabel}>
+                        Created at:
+                      </div>
+                      <div className={styles.listItemWrapperValue}>
+                        {militaryDate(project.created_on)}
+                      </div>
+                    </div>
 
-                <div className={styles.listItemWrapper}>
-                  <div className={styles.listItemWrapperLabel}>Status:</div>
-                  <div className={styles.listItemWrapperValue}>
-                    {project.status}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+                    <div className={styles.listItemWrapper}>
+                      <div className={styles.listItemWrapperLabel}>Status:</div>
+                      <div className={styles.listItemWrapperValue}>
+                        {project.status}
+                      </div>
+                    </div>
+                  </li>
+                )
+              )}
+            </ul>
+          )}
 
-        {project?._embedded?.edition?.length === 0 && (
-          <EmptyState title={`Project details not found!`} />
-        )}
-      </main>
+          {project?.data._embedded?.edition?.length === 0 && (
+            <EmptyState title={`Project details not found!`} />
+          )}
+        </main>
+      )}
     </>
   )
 }

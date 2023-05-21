@@ -27,11 +27,23 @@ export interface ProjectsProps extends BaseFoleonApi {
   }
 }
 
-export async function retriveAllProjects(pageNumber: number) {
+export interface RetriveProjectsProps {
+  pageNumber: number
+  searchBy?: string
+}
+
+export async function retriveAllProjects({ pageNumber, searchBy }: RetriveProjectsProps) {
   return await HTTP_CLIENT.get<ProjectsProps>(`/v2/magazine/title`, {
     params: {
       page: pageNumber ?? 1,
       limit: 20,
+      ...(searchBy?.length && {
+        query: [{
+          field: 'name',
+          type: 'like',
+          value: String(searchBy)
+        }],
+      }),
       'order-by': [{
         field: 'name',
         type: 'field',
@@ -51,25 +63,6 @@ export async function retriveProjectById(projectId: number) {
           value: projectId
         }
       ]
-    }
-  })
-}
-
-export async function searchProjectsByName(name: string) {
-  return await HTTP_CLIENT.get<ProjectsProps>(`/v2/magazine/title`, {
-    params: {
-      page: 1,
-      limit: 20,
-      query: [{
-        field: 'name',
-        type: 'like',
-        value: name
-      }],
-      'order-by': [{
-        field: 'name',
-        type: 'field',
-        direction: 'ASC'
-      }]
     }
   })
 }

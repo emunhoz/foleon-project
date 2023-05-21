@@ -1,73 +1,61 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import {
-  ProjectsProps,
-  retriveAllProjects,
-  searchProjectsByName,
-} from '@/services/projects'
+import { Suspense, useState } from 'react'
+import { retriveAllProjects } from '@/services/projects'
 import { militaryDate } from '@/adapters/mask/date'
 import styles from './page.module.css'
 import { Button, EmptyState, ListItem, SearchBar } from '@foleon/ui'
 import Link from 'next/link'
-import toast from 'react-hot-toast'
-import { useAuth } from '@/context/auth-context'
 import Image from 'next/image'
+import { useQuery } from '@tanstack/react-query'
+import { logout } from '@/services/auth'
+import { useRouter } from 'next/navigation'
+import Skeleton from 'react-loading-skeleton'
 
 export default function Dashboard() {
-  const [projects, setProjects] = useState<ProjectsProps>()
   const [searchBy, setSearchBy] = useState<string>('')
-  const { logout } = useAuth()
+  const [pageNumber, setPage] = useState<number>(1)
 
-  useEffect(() => {
-    fetchAllProjects(1)
-  }, [])
+  const {
+    isLoading,
+    error,
+    data: projects,
+  } = useQuery({
+    queryKey: ['allProjects', pageNumber, searchBy],
+    queryFn: () => retriveAllProjects({ pageNumber, searchBy }),
+    keepPreviousData: true,
+    staleTime: 5000,
+  })
 
-  async function fetchAllProjects(pageNumber: number) {
-    const loadingToast = toast.loading('Loading data...')
-    try {
-      const resp = await retriveAllProjects(pageNumber)
-      setProjects(resp.data)
-    } catch (error) {
-      toast.error('Something went wrong!')
-    } finally {
-      toast.dismiss(loadingToast)
-    }
+  const router = useRouter()
+
+  function handleLogout() {
+    router.push('/')
+    logout()
   }
 
-  async function searchProducts(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    const form = e.target as unknown as HTMLFormElement
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const form = event.target as unknown as HTMLFormElement
     const formData = new FormData(form)
-
     const formJson = Object.fromEntries(formData.entries())
 
-    if (formJson.searchList === '') return fetchAllProjects(1)
     setSearchBy(String(formJson.searchList))
-
-    const loadingToast = toast.loading('Searching for name...')
-    try {
-      const resp = await searchProjectsByName(String(formJson.searchList))
-      setProjects(resp.data)
-    } catch (error) {
-      toast.error('Something went wrong!')
-    } finally {
-      toast.dismiss(loadingToast)
-    }
   }
 
+  if (error) return 'An error has occurred'
+
   return (
-    <>
+    <Suspense>
       <header className={styles.headerIntern}>
         <div className={styles.headerInternWrapper}>
           <Image src="/logo-min.svg" width={30} height={30} alt="Logo" />
-          <Button label={'Logout'} onClick={logout} primary />
+          <Button label={'Logout'} onClick={handleLogout} primary />
         </div>
       </header>
       <main className={styles.main}>
         <div className={styles.searchBarItem}>
-          <form onSubmit={searchProducts}>
+          <form onSubmit={onSubmit}>
             <SearchBar
               labelName="searchList"
               placeholder="Your project name here..."
@@ -76,47 +64,64 @@ export default function Dashboard() {
         </div>
 
         <div className={styles.paginationInfo}>
-          <div>Total items: {projects?.total_items}</div>
-          <div>Items per page: {projects?.count}</div>
+          <div>Total items: {projects?.data?.total_items}</div>
+          <div>Items per page: {projects?.data?.count}</div>
         </div>
 
-        <ul className={styles.list}>
-          {projects?._embedded?.title?.map(
-            (project: { id: number; name: string; created_on: Date }) => (
-              <Link href={`/dashboard/${project.id}`} key={project.id}>
-                <ListItem
-                  name={project.name}
-                  created_on={militaryDate(project.created_on)}
-                />
-              </Link>
-            )
-          )}
-        </ul>
-
-        {searchBy.length > 0 && projects?._embedded?.title?.length === 0 && (
-          <EmptyState title={`Project ${searchBy} not found!`} />
-        )}
-
-        {projects && (
-          <div className={styles.pagination}>
-            <Button
-              label="Previous page"
-              disabled={projects.page <= 1}
-              onClick={() => fetchAllProjects(projects.page - 1)}
-            />
-
-            <div className={styles.pageNumber}>
-              {projects.page}/{projects.page_count}
-            </div>
-
-            <Button
-              label="Next page"
-              disabled={projects.page >= projects.page_count}
-              onClick={() => fetchAllProjects(projects.page + 1)}
+        {isLoading && (
+          <div className={styles.loader}>
+            <Skeleton
+              borderRadius={16}
+              count={20}
+              baseColor="#1f252d"
+              highlightColor="#283340"
+              height={79}
             />
           </div>
         )}
+
+        {!isLoading && (
+          <>
+            <ul className={styles.list}>
+              {projects?.data?._embedded?.title?.map(
+                (project: { id: number; name: string; created_on: Date }) => (
+                  <Link href={`/dashboard/${project.id}`} key={project.id}>
+                    <ListItem
+                      name={project.name}
+                      created_on={militaryDate(project.created_on)}
+                    />
+                  </Link>
+                )
+              )}
+            </ul>
+
+            {searchBy.length > 0 &&
+              projects?.data?._embedded?.title?.length === 0 && (
+                <EmptyState title={`Project ${searchBy} not found!`} />
+              )}
+
+            <div className={styles.pagination}>
+              <Button
+                label="Previous page"
+                disabled={projects && projects?.data?.page <= 1}
+                onClick={() => setPage(pageNumber - 1)}
+              />
+
+              <div className={styles.pageNumber}>
+                {projects?.data?.page}/{projects?.data?.page_count}
+              </div>
+
+              <Button
+                label="Next page"
+                disabled={
+                  projects && projects?.data?.page >= projects?.data.page_count
+                }
+                onClick={() => setPage(pageNumber + 1)}
+              />
+            </div>
+          </>
+        )}
       </main>
-    </>
+    </Suspense>
   )
 }

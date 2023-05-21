@@ -1,5 +1,6 @@
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast'
 import { HTTP_CLIENT } from './api'
+import { deleteCookie, setCookie } from 'cookies-next'
 
 export async function retriveToken() {
   try {
@@ -12,9 +13,15 @@ export async function retriveToken() {
     )
 
     toast.success('Welcome 👋', { duration: 4000 })
+    setCookie('@foleon:token', resp.data.access_token)
 
     return resp
   } catch (error) {
     return console.error(error)
   }
+}
+
+export const logout = async () => {
+  deleteCookie('@foleon:token')
+  toast.success('Seeya 👋', { duration: 4000 })
 }

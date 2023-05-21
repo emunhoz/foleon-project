@@ -23,8 +23,7 @@ HTTP_CLIENT.interceptors.request.use(
 HTTP_CLIENT.interceptors.response.use(
   response => response,
   error => {
-    if (error.response.status === 401) {
-
+    if (error.response.status === 401 || error.response.status === 403) {
       deleteCookie('@foleon:token')
     }
 
