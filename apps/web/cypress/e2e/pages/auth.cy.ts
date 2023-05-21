@@ -41,6 +41,7 @@ describe('[E2E]: Logout', () => {
   it('render a `Seeya` message toast notification', () => {
     cy.visit('http://0.0.0.0:3000/')
     cy.get('button').contains('Login').click()
+    cy.wait(5000)
     cy.get('button').contains('Logout').click()
     cy.get('div').contains('Seeya 👋').should('be.visible')
     cy.wait(5000)
