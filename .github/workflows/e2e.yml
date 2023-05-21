@@ -25,11 +25,12 @@ jobs:
       - name: Build
         run: |
           pnpm --filter @foleon/web build
+        env:
+          NEXT_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
+          NEXT_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
 
       - name: Start server app and run tests
         run: |
           pnpm --filter @foleon/web teste2e:ci
         env:
           CI: true
-          NEXT_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
-          NEXT_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
