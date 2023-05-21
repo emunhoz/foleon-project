@@ -13,10 +13,11 @@ describe('[E2E]: Publication ID page', () => {
   })
 
   it('Link should back to dashboard page', () => {
-    cy.wait(5000)
+    cy.visit('http://0.0.0.0:3000/')
+    cy.get('button').contains('Login').click()
 
     cy.get('div.listItemTitle')
-    .contains('Ads')
+    .contains('Another project')
     .click()
 
     cy.get('a')
@@ -26,7 +27,9 @@ describe('[E2E]: Publication ID page', () => {
   })
 
   it('render project not found component', () => {
-    cy.wait(5000)
+    cy.visit('http://0.0.0.0:3000/')
+    cy.get('button').contains('Login').click()
+
     cy.get('div.listItemTitle')
     .contains('Another project')
     .click()
