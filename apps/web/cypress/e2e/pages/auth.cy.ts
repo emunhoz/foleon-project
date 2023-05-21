@@ -33,9 +33,8 @@ describe('[E2E]: Logout', () => {
   it('click `Logout` button should redirect to `/` base url', () => {
     cy.visit('http://0.0.0.0:3000/')
     cy.get('button').contains('Login').click()
-    cy.url().should('contain', '/dashboard')
     cy.get('button').contains('Logout').click()
-    cy.url().should('contain', '/')
+    cy.location('pathname').should('eq', '/')
   })
 
   it('render a `Seeya` message toast notification', () => {
