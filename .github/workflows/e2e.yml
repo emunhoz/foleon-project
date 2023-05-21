@@ -26,16 +26,10 @@ jobs:
         run: |
           pnpm --filter @foleon/web build
 
-      - name: Start app
+      - name: Start server app and run tests
         run: |
-          pnpm --filter @foleon/web start && npx wait-on http://localhost:3000
+          pnpm --filter @foleon/web teste2e:ci
         env:
           CI: true
           NEXT_PUBLIC_CLIENT_ID: ${{secrets.CYPRESS_PUBLIC_CLIENT_ID}}
           NEXT_PUBLIC_CLIENT_SECRET: ${{secrets.CYPRESS_PUBLIC_CLIENT_SECRET}}
-
-      - name: Run E2E test with Cypress
-        run: |
-          pnpm --filter @foleon/web cypress:ci
-        env:
-          CI: true

@@ -26,7 +26,5 @@ describe('[Page]: Dashboard `/dashboard`', () => {
 
     expect(screen.getByText(/total items:/i)).toBeTruthy()
     expect(screen.getByText(/items per page:/i)).toBeTruthy()
-
-    screen.logTestingPlaygroundURL()
   })
 })
