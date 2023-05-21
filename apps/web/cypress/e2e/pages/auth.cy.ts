@@ -33,6 +33,7 @@ describe('[E2E]: Logout', () => {
   it('click `Logout` button should redirect to `/` base url', () => {
     cy.visit('http://0.0.0.0:3000/')
     cy.get('button').contains('Login').click()
+    cy.wait(5000)
     cy.get('button').contains('Logout').click()
     cy.location('pathname').should('eq', '/')
   })
