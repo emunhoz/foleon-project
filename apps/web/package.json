@@ -8,7 +8,6 @@
     "start": "next start",
     "teste2e:ci": "start-test 3000 'pnpm cypress:ci'",
     "lint": "next lint",
-    "test": "vitest run",
     "cypress:open": "npx cypress open",
     "cypress:ci": "./node_modules/.bin/cypress run"
   },
@@ -26,21 +25,15 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-loading-skeleton": "^3.3.1",
-    "react-query": "^3.39.3",
-    "vite": "^4.3.7"
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
-    "@vitejs/plugin-react": "^4.0.0",
     "cypress": "^12.12.0",
     "jsdom": "^22.0.0",
     "start-server-and-test": "^2.0.0",
-    "typescript": "5.0.4",
-    "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.31.0"
+    "typescript": "5.0.4"
   }
 }

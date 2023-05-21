@@ -14,6 +14,7 @@ export const EmptyState = ({ title = '', message = '' }: IEmptyState) => (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Not found</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

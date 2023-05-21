@@ -7,7 +7,7 @@ type ListItemProps = {
 
 export function ListItem({ name, created_on }: ListItemProps) {
   return (
-    <li className="listItem">
+    <div className="listItem">
       <svg
         className="listItemIcon"
         width="38px"
@@ -34,6 +34,6 @@ export function ListItem({ name, created_on }: ListItemProps) {
           <div className="listItemDate">{created_on}</div>
         </div>
       </div>
-    </li>
+    </div>
   )
 }

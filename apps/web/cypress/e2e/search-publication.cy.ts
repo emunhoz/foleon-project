@@ -1,8 +1,6 @@
 describe('[E2E]: Search flow', () => {
   it('search publication by name', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.contains('Login to continue').click()
-
+    cy.wait(5000)
     cy.get('input')
       .should('be.enabled')
 

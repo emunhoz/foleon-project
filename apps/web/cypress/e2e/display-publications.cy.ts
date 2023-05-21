@@ -1,17 +1,6 @@
 describe('[E2E]: Publication list', () => {
   it('display list of publications', () => {
-    cy.visit('http://0.0.0.0:3000/')
-    cy.contains('Login to continue').click()
-
-    cy.get('input')
-      .should('be.enabled')
-
-    cy.get('button')
-      .contains('Previous page')
-      .should('be.disabled')
-
-      cy.get('button')
-      .contains('Next page')
-      .should('be.enabled')
+    cy.get('button').contains('Login').click()
+    cy.get('div.listItem').its('length').should('eq', 20)
   })
 })

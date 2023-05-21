@@ -1,4 +1,3 @@
-import { AuthContextProvider } from '@/context/auth-context'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
@@ -19,14 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <AuthContextProvider>
+      <body className={inter.className}>
         <ReactQueryWrapper>
-          <body className={inter.className}>
+          <>
             <Toaster />
             {children}
-          </body>
+          </>
         </ReactQueryWrapper>
-      </AuthContextProvider>
+      </body>
     </html>
   )
 }
