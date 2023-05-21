@@ -1,9 +1,6 @@
 name: E2E Tests
 
-on:
-  push:
-    paths:
-      - ./apps/web
+on: push
 
 jobs:
   coverage:

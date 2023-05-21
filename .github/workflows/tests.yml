@@ -1,9 +1,6 @@
 name: Unit Tests
 
-on:
-  push:
-    paths:
-      - ./packages/ui
+on: push
 
 jobs:
   coverage:
