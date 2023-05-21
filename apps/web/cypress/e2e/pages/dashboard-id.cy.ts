@@ -1,5 +1,6 @@
 describe('[E2E]: Publication ID page', () => {
   it('render details page with default components', () => {
+    cy.wait(5000)
     cy.get('a').contains('Name').click()
 
     cy.get('a').should('have.attr', 'href').and('contain', '/dashboard')
@@ -12,7 +13,9 @@ describe('[E2E]: Publication ID page', () => {
   })
 
   it('Link should back to dashboard page', () => {
-    cy.get('a')
+    cy.wait(5000)
+
+    cy.get('div.listItemTitle')
     .contains('Ads')
     .click()
 
@@ -24,7 +27,7 @@ describe('[E2E]: Publication ID page', () => {
 
   it('render project not found component', () => {
     cy.wait(5000)
-    cy.get('a')
+    cy.get('div.listItemTitle')
     .contains('Another project')
     .click()
 
