@@ -1,5 +1,6 @@
 describe('[E2E]: Search flow', () => {
   it('search publication by name', () => {
+    cy.wait(5000)
     cy.get('input')
       .should('be.enabled')
 
