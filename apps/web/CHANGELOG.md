@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.9.16...@foleon/web@0.10.0) (2023-05-22)
+
+### Features
+
+- adding toast message to login again ([#6](https://github.com/emunhoz/foleon-project/issues/6)) ([c2b5b9c](https://github.com/emunhoz/foleon-project/commit/c2b5b9c24b4430ed4c9ae8b392f1d6ee6aa23eb9))
+
 ## [0.9.16](https://github.com/emunhoz/foleon-project/compare/@foleon/web@0.9.15...@foleon/web@0.9.16) (2023-05-21)
 
 **Note:** Version bump only for package @foleon/web
