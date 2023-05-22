@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getCookie, deleteCookie } from 'cookies-next'
+import { toast } from 'react-hot-toast'
 
 const HTTP_CLIENT = axios.create({
   baseURL: 'https://api.foleon.com'
@@ -23,7 +24,9 @@ HTTP_CLIENT.interceptors.request.use(
 HTTP_CLIENT.interceptors.response.use(
   response => response,
   error => {
+    toast.dismiss()
     if (error.response.status === 401 || error.response.status === 403) {
+      toast.error('You need to login again')
       deleteCookie('@foleon:token')
     }
 
