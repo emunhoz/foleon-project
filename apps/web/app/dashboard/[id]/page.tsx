@@ -1,11 +1,6 @@
 'use client'
-import { useEffect, useState } from 'react'
 import styles from './page.module.css'
-import {
-  ProjectDetailsProps,
-  ProjectsProps,
-  retriveProjectById,
-} from '@/services/projects'
+import { ProjectDetailsProps, retriveProjectById } from '@/services/projects'
 import Link from 'next/link'
 import { militaryDate } from '@/adapters/mask/date'
 import { EmptyState } from '@foleon/ui'
