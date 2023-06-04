@@ -4,8 +4,8 @@
 
 | Package                                               | Description                                                                            |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@foleon/web`](./apps/web)                           | Front end application create with NextJS                                               |
-| [`@foleon/ui`](./packages/ui)                         | React library components with [stories](https://storybook.js.org/)                     |
+| [`@foleon/web`](./apps/web)                           | Front end application created with NextJS                                              |
+| [`@foleon/ui`](./packages/ui)                         | React components with [stories](https://storybook.js.org/)                             |
 | [`@foleon/design-tokens`](./packages/design-tokens)   | Design tokens (colors, font)                                                           |
 
 ## 💥 Features
@@ -38,6 +38,15 @@
 
 - Node >= `v18.12.1`
 - PNPM >= `8.5.1`
+
+Create an `.env` file in [`@foleon/web`](./apps/web):
+
+```
+NEXT_PUBLIC_CLIENT_ID=ENTER_YOUR_FOLEON_CLIENT_ID_HERE
+NEXT_PUBLIC_CLIENT_SECRET=ENTER_YOUR_FOLEON_CLIENT_SECRET_HERE
+```
+
+Ready to go!
 
 ## 🚀 Start
 
